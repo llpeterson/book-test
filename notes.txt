@@ -1,0 +1,89 @@
+From O-RAN Page
+===================
+
+O-RAN E2 Service Model (E2SM) v2.0
+
+This document serves as the overall framework for the set of
+specialized E2SMs, each of which is dedicated to a specific RAN
+function. This document also includes the common information elements
+used across the specialized E2SMs.
+
+O-RAN E2 Service Model: RAN Control (E2SM-RC) v1.0
+
+This document specifies the capabilities exposed over E2 interface to
+enable efficient control of RAN, including radio bear control, radio
+access control, connected mode mobility, etc. The following services
+are detailed in the specification:
+
+* E2 REPORT services, which are used to expose RAN control and UE
+  context related information
+
+* E2 INSERT services, which are used to suspend RAN control related
+  call processes
+
+* E2 CONTROL services, which are used to resume or initiate RAN
+  control related call processes, modify RAN configuration and/or E2
+  service-related UE context information
+
+* E2 POLICY services, which are used to modify the behaviour of RAN
+  control related processes
+
+O-RAN E2 Service Model: Key Performance Measurement (E2SM-KPM) v2.0
+
+This document specifies the capabilities exposed over E2 interface to
+enable report of measurements from O-DU, O-CU-CP, and/or O-CU-UP. This
+version supports the necessary performance measurements to fulfill the
+requirements for Traffic Steering and QoS/QoE optimization use cases.
+
+From Mavenir Page
+=================
+
+Service Model for RAN Control (RC)
+
+In its initial form the E2SM-RC specification had five key ingredients:
+
+* The Insert Service: Defines how can the RAN “request” the RIC to
+  control a given RAN functionality on a per-UE level/bearer-level?
+
+* The Control Service: Defines how the RIC can “control” the RAN for a
+   given RAN functionality on a per-UE level/bearer-level?
+
+* The Report Service: Defines how the RAN can “report” state and context
+   information to the RIC on a per-UE level/bearer-level (in addition to
+   cell-level and node-level)?
+
+* The Policy Service: Defines how the RIC can “prescriptively control”
+   the RAN for a given RAN functionality on a per-UE level/bearer-level?
+
+* The Event Trigger: Describes how to define the “events” in the RAN
+  and how the RIC may subscribe to such events in order to execute the
+  above services.
+
+All these services are meant to control the following functionalities
+in the first release:
+
+* Radio Bearer Control
+* Radio Resource Allocation Control
+* Connected Mode Mobility Control
+* Radio Access Control
+* Carrier Aggregation Control
+* Idle Mode Mobility Control (predominantly for traffic steering and QoS/QoE use-cases)
+
+The E2SM-RC drafting team was comprised of four companies due to the
+massive effort of the standard. The E2SM-RC drafting specification
+(including the parts drafted by other companies) was primarily based
+on Mavenir’s “parameter and message encoding contribution” that was
+adopted in the specification. This allows the RIC to control any
+parameter in the RAN in any level of hierarchical nested 3GPP
+structures using a “generic encoding scheme,” instead of having to
+enumerate individual message structures containing individual
+parameters and categorizing them all as M or O or C-, as done in 3GPP.
+
+Mavenir’s proposal categorized every RAN parameter as either an
+ELEMENT (a singular RAN parameter) or a STRUCTURE (further containing
+a sequence of RAN parameters) or a LIST (containing a list of itemized
+structures) and the message between the RAN and the RIC can encode any
+parameter based on this categorization, while using a simple structure
+(again, defined by Mavenir). Mavenir also identified which RAN
+parameters would need to be controlled by the RIC for the above
+functions.
