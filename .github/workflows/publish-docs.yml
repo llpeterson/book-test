@@ -1,6 +1,6 @@
 name: Publish Docs Workflow
 run-name: ${{ github.actor }} is publishing document artifacts 🚀
-on: [push]
+on: [push, workflow_dispatch]
 jobs:
   Publish_Docs:
     runs-on: ubuntu-latest
@@ -15,9 +15,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}/_build/html
 
-      - name: Rsync HTML
-        uses: llpeterson/rsync-deploy-action@main
-        id: rsync-deploy-action
+      - name: rsync html
         with:
           ssh_login_username: ${{ secrets.SSH_LOGIN_USERNAME }}
           remote_server_ip: ${{ secrets.REMOTE_SERVER_IP }}
