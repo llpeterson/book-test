@@ -1,8 +1,8 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Publish Docs Workflow
+run-name: ${{ github.actor }} is running GitHub Actions 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Publish Docs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -11,9 +11,20 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - run: make html
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}/_build/html
+
+      - name: Rsync HTML
+          uses: llpeterson/rsync-deploy-action@v1.0.0
+          id: rsync-deploy-action
+          with:
+            ssh_login_username: ${{ secrets.SSH_LOGIN_USERNAME }}
+            remote_server_ip: ${{ secrets.REMOTE_SERVER_IP }}
+            ssh_port: ${{ secrets.SSH_PORT }}
+            ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+            source_path: ${{ github.workspace }}/_build/html
+            destination_path: ~/rsync_test
+
       - run: echo "🍏 This job's status is ${{ job.status }}."
