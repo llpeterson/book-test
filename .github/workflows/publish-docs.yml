@@ -16,6 +16,8 @@ jobs:
           ls ${{ github.workspace }}/_build/html
 
       - name: rsync html
+        uses: llpeterson/rsync-deploy-action@main
+        id: rsync-deploy-action
         with:
           ssh_login_username: ${{ secrets.SSH_LOGIN_USERNAME }}
           remote_server_ip: ${{ secrets.REMOTE_SERVER_IP }}
