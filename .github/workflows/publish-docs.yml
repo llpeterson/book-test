@@ -1,5 +1,5 @@
 name: Publish Docs Workflow
-run-name: ${{ github.actor }} is running GitHub Actions 🚀
+run-name: ${{ github.actor }} is publishing document artifacts 🚀
 on: [push]
 jobs:
   Publish_Docs:
