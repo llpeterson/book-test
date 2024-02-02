@@ -2,7 +2,7 @@ name: Publish Docs Workflow
 run-name: ${{ github.actor }} is running GitHub Actions 🚀
 on: [push]
 jobs:
-  Publish Docs:
+  Publish_Docs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
