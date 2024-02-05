@@ -17,7 +17,6 @@ jobs:
           ls ${{ github.workspace }}/_build/html
 
       - run: chmod +x ./.github/scripts/rsync.sh
-      - name: rsync html
-	run: echo " ${{ secrets.SSH_LOGIN_USERNAME }} ${{ secrets.REMOTE_SERVER_IP }} ${{ github.workspace }}/_build/html ~/rsync_test"
+      - run: echo " ${{ secrets.SSH_LOGIN_USERNAME }} ${{ secrets.REMOTE_SERVER_IP }} ${{ github.workspace }}/_build/html ~/rsync_test"
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
