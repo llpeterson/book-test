@@ -10,20 +10,22 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repo
         uses: actions/checkout@v4
-      - run: make html
-      - name: List files in the repository
+      - name: Build html
+        run: make html
+      - name: List built files
         run: |
           ls ${{ github.workspace }}/_build/html
 
       - name: rsync html
-        uses: llpeterson/rsync-deploy-action@main
-        id: rsync-deploy-action
-        with:
+        env:
           ssh_login_username: ${{ secrets.SSH_LOGIN_USERNAME }}
           remote_server_ip: ${{ secrets.REMOTE_SERVER_IP }}
           ssh_port: ${{ secrets.SSH_PORT }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source_path: ${{ github.workspace }}/_build/html
-          destination_path: ~/rsync_test
+          src_path: ${{ github.workspace }}/_build/html
+          dst_path: ~/rsync_test
+        run |
+          chmod +x ./scripts/rsync.sh
+	  ./scripts/rsync.sh ssh_login_username remote_server_ip ssh_port ssh_private_key src_path dst_path
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
