@@ -16,10 +16,9 @@ jobs:
         run: |
           ls ${{ github.workspace }}/_build/html
 
+      - run: echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ${{ github.workspace }}/id_rsa
+      - run: chmod 600 ${{ github.workspace }}/id_rsa
       - run: chmod +x ./.github/scripts/rsync.sh
-      - run: echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ./.github/scripts/id_rsa
-      - run: wc ./.github/scripts/id_rsa
-      - run: chmod 600 ./.github/scripts/id_rsa
-      - run: ./.github/scripts/rsync.sh ${{ secrets.SSH_LOGIN_USERNAME }} ${{ secrets.REMOTE_SERVER_IP }} ${{ secrets.SSH_PORT }} ${{ github.workspace }}/_build/html rsync_test
+      - run: ./.github/scripts/rsync.sh ${{ secrets.SSH_LOGIN_USERNAME }} ${{ secrets.REMOTE_SERVER_IP }} ${{ secrets.SSH_PORT }} ${{ github.workspace }}/_build/html rsync_test ${{ github.workspace }}/id_rsa
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
