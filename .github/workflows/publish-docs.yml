@@ -17,7 +17,8 @@ jobs:
           ls ${{ github.workspace }}/_build/html
 
       - run: chmod +x ./.github/scripts/rsync.sh
-      - run: printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" >./.github/scripts/id_rsa
+      - run: echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ./.github/scripts/id_rsa
+      - run: wc ./.github/scripts/id_rsa
       - run: chmod 600 ./.github/scripts/id_rsa
       - run: ./.github/scripts/rsync.sh ${{ secrets.SSH_LOGIN_USERNAME }} ${{ secrets.REMOTE_SERVER_IP }} ${{ secrets.SSH_PORT }} ${{ github.workspace }}/_build/html rsync_test
 
