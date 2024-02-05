@@ -10,7 +10,8 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repo
         uses: actions/checkout@v4
-      - run: make html
+      - name: Build html
+        run: make html
       - name: List built files
         run: |
           ls ${{ github.workspace }}/_build/html
@@ -23,7 +24,7 @@ jobs:
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           src_path: ${{ github.workspace }}/_build/html
           dst_path: ~/rsync_test
-        run |
+        run: |
           chmod +x ./.github/scripts/rsync.sh
 	  ./.github/scripts/rsync.sh ssh_login_username remote_server_ip ssh_port ssh_private_key src_path dst_path
 
