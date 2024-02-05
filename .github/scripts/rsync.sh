@@ -15,7 +15,7 @@ echo "$3"
 echo "$4"
 echo "$5"
 
-SSH_PRIVATE_KEY_FILE='./id_rsa'
+SSH_PRIVATE_KEY_FILE='./.github/scripts/id_rsa'
 
 # echo "Saving private key......"
 
