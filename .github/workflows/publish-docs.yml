@@ -18,13 +18,6 @@ jobs:
 
       - run: chmod +x ./.github/scripts/rsync.sh
       - name: rsync html
-        env:
-          ssh_login_username: ${{ secrets.SSH_LOGIN_USERNAME }}
-          remote_server_ip: ${{ secrets.REMOTE_SERVER_IP }}
-          ssh_port: ${{ secrets.SSH_PORT }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          src_path: ${{ github.workspace }}/_build/html
-          dst_path: ~/rsync_test
-	run: ./.github/scripts/rsync.sh ssh_login_username remote_server_ip ssh_port ssh_private_key src_path dst_path
+	run: echo ssh_login_username remote_server_ip ssh_port src_path dst_path
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
