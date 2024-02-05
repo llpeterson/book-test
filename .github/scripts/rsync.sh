@@ -11,6 +11,12 @@
 
 # set -euo pipefail
 
+echo $1
+echo $2
+echo $3
+echo $5
+echo $6
+
 SSH_PRIVATE_KEY_FILE='./id_rsa'
 
 echo "Saving private key......"
@@ -24,8 +30,6 @@ chmod 600 $SSH_PRIVATE_KEY_FILE
 SSH_COMMAND="ssh -p $3 -i $SSH_PRIVATE_KEY_FILE -o StrictHostKeyChecking=no"
 
 echo =========================================================================
-
-ls $5
 
 start_time=$(date)
 
