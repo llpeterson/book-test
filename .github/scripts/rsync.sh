@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash
 
 # $1: ssh_login_username
 # $2: remote_server_ip
@@ -11,18 +11,18 @@
 
 # set -euo pipefail
 
-echo $1
-echo $2
-echo $3
-echo $5
-echo $6
+echo "$1"
+echo "$2"
+echo "$3"
+echo "$5"
+echo "$6"
 
 SSH_PRIVATE_KEY_FILE='./id_rsa'
 
 echo "Saving private key......"
 
 printf "%s" "$4" >$SSH_PRIVATE_KEY_FILE
-wc ./id_rsa
+wc $SSH_PRIVATE_KEY_FILE
 echo "Done"
 
 chmod 600 $SSH_PRIVATE_KEY_FILE
