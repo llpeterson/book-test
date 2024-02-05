@@ -17,13 +17,6 @@ jobs:
           ls ${{ github.workspace }}/_build/html
 
       - name: rsync html
-        env:
-          ssh_login_username: ${{ secrets.SSH_LOGIN_USERNAME }}
-          remote_server_ip: ${{ secrets.REMOTE_SERVER_IP }}
-          ssh_port: ${{ secrets.SSH_PORT }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          src_path: ${{ github.workspace }}/_build/html
-          dst_path: ~/rsync_test
         run: |
           chmod +x ./.github/scripts/rsync.sh
 	  ./.github/scripts/rsync.sh ssh_login_username remote_server_ip ssh_port ssh_private_key src_path dst_path
