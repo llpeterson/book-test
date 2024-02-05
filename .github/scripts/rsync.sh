@@ -9,7 +9,7 @@
 # $7: ssh_args
 # $8: rsync_args
 
-set -euo pipefail
+# set -euo pipefail
 
 SSH_PRIVATE_KEY_FILE='./id_rsa'
 
