@@ -49,7 +49,7 @@ author = u'Peterson, Sunay, Davie'
 # needs_sphinx = '1.0'
 
 # make all warnings errors
-warning_is_error = False
+warning_is_error = True
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
