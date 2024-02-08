@@ -1,3 +1,5 @@
+image:: https://github.com/llpeterson/book-test/actions/workflows/publish-docs.yml/badge.svg
+
 About The Book
 ===============
 
