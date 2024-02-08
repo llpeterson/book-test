@@ -1,4 +1,6 @@
-image:: https://github.com/llpeterson/book-test/actions/workflows/publish-docs.yml/badge.svg
+.. |pub-badge| image:: https://github.com/llpeterson/book-test/actions/workflows/publish-docs.yml/badge.svg
+
+|pub-badge|
 
 About The Book
 ===============
