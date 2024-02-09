@@ -1,8 +1,8 @@
 name: Publish Docs Workflow
 run-name: ${{ github.actor }} is publishing document artifacts
 on: [push, workflow_dispatch]
-    branches:
-      - master
+  branches:
+    - master
 jobs:
   Publish_Docs:
     runs-on: ubuntu-latest
