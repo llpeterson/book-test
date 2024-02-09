@@ -1,10 +1,10 @@
 name: Publish Docs Workflow
 run-name: ${{ github.actor }} is publishing document artifacts
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
-  workflow_dispatch:
 
 jobs:
   Publish_Docs:
